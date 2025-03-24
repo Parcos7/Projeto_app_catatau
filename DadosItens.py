@@ -1,21 +1,20 @@
 class DadosItens:
-    def __init__(self, sabor, qnt, valor, saldo):
+    def __init__(self, sabor, qnt, valor):
         self.sabor = sabor
         self.qnt = qnt
         self.valor = valor
-        self.saldo = saldo
-
+        
     def ApDados(self):
-        print(f"\bNome: {self.sabor}\nQnt: {self.qnt}\nValor Total: {self.valor*self.qnt}\nValor Vendidos: {self.saldo}\n")
+        print(f"\bNome: {self.sabor}\nQnt: {self.qnt}\nValor total por qnt: {self.valor*self.qnt}\n ")
 
-    def venda(self, resul):
-        if self.qnt >= resul:
-            self.qnt -= resul
-            self.saldo += self.valor * self.qnt
-            print(f"Venda realizada! Agora restam {self.qnt} unidades de {self.sabor}.")
+    def venda(self, qntVendida):
+        if self.qnt >= qntVendida:
+            self.qnt -= qntVendida
+            print(f"Venda realizada! Agora restam {self.qnt} unidades de {self.sabor}.\n")
         else:
             print("Estoque insuficiente!")
 
-    def ADD(self, resul):
-        self.qnt += resul
+    def ADD(self, qntADD):
+        self.qnt += qntADD
         print("Quantidade adicionada!")
+    
