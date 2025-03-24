@@ -1,31 +1,31 @@
 from DadosItens import DadosItens
 
 estoque = []
+def VerDados():
+    for itens in estoque:
+        itens.ApDados()
 
 def cadastro():
     while True:
         sabor = input("Escolha o sabor a ser cadastrado: ").strip().lower()
         qnt = int(input("Escolha a quantidade: "))
         valor = float(input("Valor unitario?: "))
-        item = DadosItens(sabor, qnt, valor, saldo = 0)
+        item = DadosItens(sabor, qnt, valor)
         estoque.append(item)
-        escolha = input("Deseja cadastrar algo mais? (s/n)\n").strip().lower()
+        escolha = input("Deseja cadastrar algo mais? (s/n): ").strip().lower()
         if escolha != "s":
             break
 
-def VerDados():
-    for itens in estoque:
-        itens.ApDados()
-
-def venda():   
-        while True:
-            itemVenda = input("Qual item foi vendido? ").strip().lower()
-            for itens in estoque:
-                if itens.sabor == itemVenda:
-                    qntVendida = int(input("Qual a quantidade a ser vendida? "))
-                    itens.venda(qntVendida)
-                    break
-            break
+def venda():
+    while True:
+        itemVenda = input("Qual item foi vendido? ").strip().lower()
+        for itens in estoque:
+            if itens.sabor == itemVenda:
+                qntVendida = int(input("Qual a quantidade a ser vendida? "))
+                itens.venda(qntVendida)
+                VerDados()
+                break
+        break
 
 def addItem():
     while True:    
@@ -38,7 +38,7 @@ def addItem():
         break
 
 while True:
-    x = int(input("Escolha:\n 1 - Cadastrar item\n 2 - Ver Dados\n 3 - Cadastrar Venda\n 4 - Adicionar item existente\n"))
+    x = int(input("Escolha:\n 1 - Cadastrar item\n 2 - Ver Dados\n 3 - Cadastrar Venda\n 4 - Adicionar item existente\n 5 - Valor Total\n"))
     match x:
         case 1:    
             cadastro()
@@ -48,4 +48,3 @@ while True:
             venda()
         case 4:
             addItem()
-
