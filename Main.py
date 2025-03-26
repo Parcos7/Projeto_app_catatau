@@ -1,5 +1,4 @@
 from DadosItens import DadosItens
-
 estoque = []
 def VerDados():
     for itens in estoque:
@@ -10,11 +9,17 @@ def cadastro():
         sabor = input("Escolha o sabor a ser cadastrado: ").strip().lower()
         qnt = int(input("Escolha a quantidade: "))
         valor = float(input("Valor unitario?: "))
-        item = DadosItens(sabor, qnt, valor)
+        item = DadosItens(sabor, qnt, valor, saldo = 0)
         estoque.append(item)
         escolha = input("Deseja cadastrar algo mais? (s/n): ").strip().lower()
         if escolha != "s":
             break
+        
+def v_total():
+    vTotal =  0
+    for itens in estoque:
+        vTotal += itens.saldo
+    return vTotal
 
 def venda():
     while True:
@@ -48,3 +53,5 @@ while True:
             venda()
         case 4:
             addItem()
+        case 5:
+            print(f"Valor total vendido: R$ {v_total()}")
