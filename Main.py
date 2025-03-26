@@ -54,4 +54,4 @@ while True:
         case 4:
             addItem()
         case 5:
-            print(f"Valor total vendido: R$ {v_total()}")
+            print(f"\nValor total vendido: R$ {v_total()}\n")
